@@ -15,7 +15,7 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
   @IBOutlet weak var searchBar: UISearchBar!
   
   //Network controller:
-  let networkController = NetworkController()
+  let networkController = NetworkController.sharedNetworkController
   //Repositories:
   var repositories = [Repository]()
   
@@ -60,7 +60,9 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     //Search repositories.
     networkController.fetchRepositoryBySearchTerm(searchBar.text, callback: { (repositories, error) -> () in
-      self.repositories = repositories!
+      if repositories != nil {
+        self.repositories = repositories!
+      } //end if
       self.tableRepositories.reloadData()
     }) //end closure
     //Dismiss keyboard.

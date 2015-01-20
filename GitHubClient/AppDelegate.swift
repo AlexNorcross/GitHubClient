@@ -19,7 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //Fonts:
     UILabel.appearance().font = UIFont(name: "Avenir", size: 17.0)
-
+    
+    //Return.
+    return true
+  }
+  
+  //Function: In response to another application opening app.
+  func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    //Retrieve access token.
+    NetworkController.sharedNetworkController.handleCallbackURL(url)
+    
+    //Return.
     return true
   }
 
