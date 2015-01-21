@@ -22,11 +22,19 @@ class MenuTableViewController: UITableViewController {
   override func viewDidAppear(animated: Bool) {
     //Super:
     super.viewDidAppear(animated)
-
-    //Retrieve access token. If none, request access token.
+    
+    //Retrieve access token. If none, alert user that permissions must be granted and request access token.
     if networkController.accessToken == nil {
-      //Sign in: alert user - user will be sent to sign into service.
-      networkController.requestTemporaryCode()
+      //Alert controller: to explain to user that permissions must be granted.
+      let alertLogin = UIAlertController(title: "GitHubClient", message: "GitHubClient needs permission(s) to access your GitHub account.", preferredStyle: UIAlertControllerStyle.Alert)
+      //OK button:
+      let buttonOK = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
+        //Sign in: alert user - user will be sent to sign into service.
+        self.networkController.requestTemporaryCode()
+      } //end closure
+      alertLogin.addAction(buttonOK)
+      //Present alert controller.
+      self.presentViewController(alertLogin, animated: true, completion: nil)
     } //end if
   } //end func
 }
