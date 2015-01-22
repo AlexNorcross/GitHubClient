@@ -19,7 +19,7 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
   //Repositories:
   var repositories = [Repository]()
   
-  //Function: Set View Controller.
+  //Function: Set up view controller.
   override func viewDidLoad() {
     //Super:
     super.viewDidLoad()
@@ -35,7 +35,7 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
     searchBar.delegate = self
   } //end func
   
-  //MARK: TableView Datasource
+  //MARK: TableView Data Source
   
   //Function: Set table view row count.
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -28,6 +28,9 @@ class NetworkController {
   //URL session:
   var urlSession: NSURLSession!
   
+  //Queue:
+  let queueImage = NSOperationQueue()
+  
   //Initialize: Initialize URL session and retrieve access token, if any.
   init() {
     //URL session:
@@ -77,41 +80,95 @@ class NetworkController {
       dataTask.resume()
   } //end func
   
-  //Function: Fetch repositories from GitHub containing specified search term.
-  //Input: term to search for, closure with json repository data and error
+  //Function: Fetch repositories from GitHub.
   func fetchRepositoryBySearchTerm(searchTerm: String, callback: ([Repository]?, String?) -> ()) {
     //URL: with authorization
     let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?q=\(searchTerm)")!)
     urlRequest.setValue("token \(accessToken!)", forHTTPHeaderField: "Authorization")
     
-    //Execute request and retrieve repositories.
+    //Execute request.
     let dataTask = urlSession.dataTaskWithRequest(urlRequest, completionHandler: { (jsonData, urlResponse, error) -> Void in
       if error == nil {
         let response = urlResponse as NSHTTPURLResponse
-        println(response)
         switch response.statusCode {
           case 200...299:
             //Parse JSON response.
+            var repositories = [Repository]()
             var errorPointer: NSError?
             if let jsonDictionary = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &errorPointer) as? [String : AnyObject] {
-              //Repositories:
-              var repositories = [Repository]()
               if let items = jsonDictionary["items"] as? [[String : AnyObject]] {
                 for item in items {
                   repositories.append(Repository(jsonRepository: item))
                 } //end for
               } //end if
-
-              //Return to main queue.
-              NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                callback(repositories, nil)
-              }) //end closure
             } //end if
+            
+            //Return to main queue.
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+              callback(repositories, nil)
+            }) //end closure
           default:
             callback(nil, "Error retrieving repository by search term")
         } //end switcch
       } //end if
     }) //end closure
     dataTask.resume()
+  } //end func
+  
+  //Function: Fetch user information from GitHub.
+  func fetchUserBySearchTerm(searchTerm: String, callback: ([User]?, String?) -> ()) {
+    //URL: with authorization
+    let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/users?q=\(searchTerm)")!)
+    urlRequest.setValue("token \(accessToken!)", forHTTPHeaderField: "Authorization")
+    
+    //Execute request.
+    let dataTask = urlSession.dataTaskWithRequest(urlRequest, completionHandler: { (jsonData, urlResponse, error) -> Void in
+      if error == nil {
+        let response = urlResponse as NSHTTPURLResponse
+        switch response.statusCode {
+          case 200...299:
+            //Parse JSON response.
+            var users = [User]()
+            var errorPointer: NSError?
+            if let jsonDictonary = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &errorPointer) as? [String : AnyObject] {
+              if let items = jsonDictonary["items"] as? [[String : AnyObject]] {
+                for item in items {
+                  users.append(User(jsonUser: item))
+                } //end for
+              } //end if
+            } //end if
+            
+            //Return to main queue.
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+              callback(users, nil)
+            }) //end closure
+          default:
+            callback(nil, "Error retrieving user by search term")
+        } //end switch
+      } //end if
+    }) //end closure
+    dataTask.resume()
+  } //end func
+  
+  //Function: Fetch user avatar image.
+  func fetchUserAvatarImage(avatarURL: String, callback: (UIImage?) -> ()) {
+    var image: UIImage?
+    let url = NSURL(string: avatarURL)
+    if url != nil {
+      queueImage.addOperationWithBlock({ () -> Void in
+        //Get image.
+        let dataImage = NSData(contentsOfURL: url!)
+        if dataImage != nil {
+          image = UIImage(data: dataImage!)
+        } //end if
+
+        //Return to main queque.
+        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+          callback(image)
+        }) //end closure
+      }) //end closure
+    } else {
+      callback(image)
+    } //end if
   } //end func
 }

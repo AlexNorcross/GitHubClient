@@ -12,9 +12,8 @@ struct Repository {
   let name: String
   let author: String!
   
-  //Initialize: Parson JSON data.
+  //Initialize: Parse JSON data.
   init(jsonRepository: [String : AnyObject]) {
-    //Repositiory properties:
     self.name = jsonRepository["name"] as String
     
     //Owner properties:

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA2D4B771A70491E00693A27 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D4B761A70491E00693A27 /* SearchUserViewController.swift */; };
+		BA2D4B791A704ADD00693A27 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D4B781A704ADD00693A27 /* UserViewController.swift */; };
+		BA2D4B7B1A704C4400693A27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D4B7A1A704C4400693A27 /* User.swift */; };
+		BA2D4B7D1A7054A200693A27 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D4B7C1A7054A200693A27 /* UserCollectionViewCell.swift */; };
+		BA2D4B7F1A70A6B700693A27 /* ToUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D4B7E1A70A6B700693A27 /* ToUserViewController.swift */; };
 		BA40D9621A6DA8C8003E995A /* SearchRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA40D9611A6DA8C8003E995A /* SearchRepositoriesViewController.swift */; };
 		BA40D9641A6DA8EF003E995A /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA40D9631A6DA8EF003E995A /* NetworkController.swift */; };
 		BA40D9661A6DB1B6003E995A /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA40D9651A6DB1B6003E995A /* Repository.swift */; };
@@ -31,6 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA2D4B761A70491E00693A27 /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
+		BA2D4B781A704ADD00693A27 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		BA2D4B7A1A704C4400693A27 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BA2D4B7C1A7054A200693A27 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		BA2D4B7E1A70A6B700693A27 /* ToUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToUserViewController.swift; sourceTree = "<group>"; };
 		BA40D9611A6DA8C8003E995A /* SearchRepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesViewController.swift; sourceTree = "<group>"; };
 		BA40D9631A6DA8EF003E995A /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		BA40D9651A6DB1B6003E995A /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -125,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				BA40D9651A6DB1B6003E995A /* Repository.swift */,
+				BA2D4B7A1A704C4400693A27 /* User.swift */,
 			);
 			name = "Model Layer";
 			sourceTree = "<group>";
@@ -132,9 +143,12 @@
 		BA5172121A6DA08900B045D3 /* Controller Layer */ = {
 			isa = PBXGroup;
 			children = (
+				BA40D9631A6DA8EF003E995A /* NetworkController.swift */,
 				BA5172141A6DA1AA00B045D3 /* MenuTableViewController.swift */,
 				BA40D9611A6DA8C8003E995A /* SearchRepositoriesViewController.swift */,
-				BA40D9631A6DA8EF003E995A /* NetworkController.swift */,
+				BA2D4B761A70491E00693A27 /* SearchUserViewController.swift */,
+				BA2D4B781A704ADD00693A27 /* UserViewController.swift */,
+				BA2D4B7E1A70A6B700693A27 /* ToUserViewController.swift */,
 			);
 			name = "Controller Layer";
 			sourceTree = "<group>";
@@ -147,6 +161,7 @@
 				BA5171F51A6DA06B00B045D3 /* Main.storyboard */,
 				BA40D96B1A6DB836003E995A /* RepositoryTableViewCell.xib */,
 				BA40D9691A6DB817003E995A /* RepositoryTableViewCell.swift */,
+				BA2D4B7C1A7054A200693A27 /* UserCollectionViewCell.swift */,
 			);
 			name = "View Layer";
 			sourceTree = "<group>";
@@ -253,11 +268,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA40D9641A6DA8EF003E995A /* NetworkController.swift in Sources */,
+				BA2D4B791A704ADD00693A27 /* UserViewController.swift in Sources */,
 				BA40D9621A6DA8C8003E995A /* SearchRepositoriesViewController.swift in Sources */,
 				BA40D9661A6DB1B6003E995A /* Repository.swift in Sources */,
+				BA2D4B771A70491E00693A27 /* SearchUserViewController.swift in Sources */,
+				BA2D4B7F1A70A6B700693A27 /* ToUserViewController.swift in Sources */,
+				BA2D4B7B1A704C4400693A27 /* User.swift in Sources */,
 				BA40D96A1A6DB817003E995A /* RepositoryTableViewCell.swift in Sources */,
 				BA5172151A6DA1AA00B045D3 /* MenuTableViewController.swift in Sources */,
 				BA5171F21A6DA06B00B045D3 /* AppDelegate.swift in Sources */,
+				BA2D4B7D1A7054A200693A27 /* UserCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

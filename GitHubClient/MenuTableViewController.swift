@@ -9,10 +9,13 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+  //Table: containing menu options
+  @IBOutlet var tableMenu: UITableView!
+  
   //Network controller:
   let networkController = NetworkController.sharedNetworkController
   
-  //Function: Set up View Controller.
+  //Function: Set up view controller.
   override func viewDidLoad() {
     //Super:
     super.viewDidLoad()
@@ -23,7 +26,7 @@ class MenuTableViewController: UITableViewController {
     //Super:
     super.viewDidAppear(animated)
     
-    //Retrieve access token. If none, alert user that permissions must be granted and request access token.
+    //Retrieve access token. If none, alert user that permissions must be granted.
     if networkController.accessToken == nil {
       //Alert controller: to explain to user that permissions must be granted.
       let alertLogin = UIAlertController(title: "GitHubClient", message: "GitHubClient needs permission(s) to access your GitHub account.", preferredStyle: UIAlertControllerStyle.Alert)
