@@ -155,6 +155,7 @@ class NetworkController {
     var image: UIImage?
     let url = NSURL(string: avatarURL)
     if url != nil {
+      queueImage.maxConcurrentOperationCount = 1
       queueImage.addOperationWithBlock({ () -> Void in
         //Get image.
         let dataImage = NSData(contentsOfURL: url!)

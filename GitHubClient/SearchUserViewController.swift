@@ -55,14 +55,24 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
     cell.imageUser.layer.cornerRadius = 10
     cell.imageUser.layer.masksToBounds = true
     cell.imageUser.image = nil
+    cell.imageUser.alpha = 0 //set to fade in
+    let cellAnimationDuration = 0.5
     if user.avatarImage == nil {
       networkController.fetchUserAvatarImage(user.avatarURL, callback: { (avatarImage) -> () in
         user.avatarImage = avatarImage
         self.users[indexPath.row].avatarImage = avatarImage
         cell.imageUser.image = user.avatarImage
+        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+          UIView.animateWithDuration(cellAnimationDuration, animations: { () -> Void in
+            cell.imageUser.alpha = 1.0
+          }) //end closure
+        }) //end closure
       }) //end closure
     } else {
       cell.imageUser.image = user.avatarImage
+      UIView.animateWithDuration(cellAnimationDuration, animations: { () -> Void in
+        cell.imageUser.alpha = 1.0
+      }) //end closure
     } //end if
     //Return cell.
     return cell
