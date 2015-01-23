@@ -30,7 +30,10 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
     
     //Search bar: delegate
     searchBar.delegate = self
-    
+  } //end func
+  
+  //Function: Set up view controller.
+  override func viewWillAppear(animated: Bool) {
     //Navigation bar: delegate
     navigationController?.delegate = self
   } //end func
@@ -49,6 +52,8 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
     //User:
     var user = users[indexPath.row]
     //Cell contents:
+    cell.imageUser.layer.cornerRadius = 10
+    cell.imageUser.layer.masksToBounds = true
     cell.imageUser.image = nil
     if user.avatarImage == nil {
       networkController.fetchUserAvatarImage(user.avatarURL, callback: { (avatarImage) -> () in
@@ -64,6 +69,11 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
   } //end func
   
   //MARK: SearchBar Delegate
+  
+  //Function: Validate text entered.
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    return text.validateUserName()
+  } //end func
   
   //Function: Handle event when Search button is selected.
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -93,7 +103,7 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
   
   //Function: Navigate with animation to user view controller.
   func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    if fromVC is SearchUserViewController {
+    if toVC is UserViewController {
       return ToUserViewController()
     } else {
       return nil

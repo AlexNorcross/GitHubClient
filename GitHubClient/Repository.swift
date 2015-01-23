@@ -11,10 +11,12 @@ import Foundation
 struct Repository {
   let name: String
   let author: String!
+  let url: String
   
   //Initialize: Parse JSON data.
   init(jsonRepository: [String : AnyObject]) {
     self.name = jsonRepository["name"] as String
+    self.url = jsonRepository["html_url"] as String
     
     //Owner properties:
     if let owner = jsonRepository["owner"] as? [String : AnyObject] {

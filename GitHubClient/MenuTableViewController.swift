@@ -26,6 +26,9 @@ class MenuTableViewController: UITableViewController {
     //Super:
     super.viewDidAppear(animated)
     
+    //Navigation controller:
+    self.navigationController?.delegate = nil
+    
     //Retrieve access token. If none, alert user that permissions must be granted.
     if networkController.accessToken == nil {
       //Alert controller: to explain to user that permissions must be granted.

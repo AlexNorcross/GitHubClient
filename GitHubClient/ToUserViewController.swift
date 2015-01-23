@@ -26,7 +26,7 @@ class ToUserViewController: NSObject, UIViewControllerAnimatedTransitioning {
     let cellIndexPath = fromVC.collectionUsers.indexPathsForSelectedItems().first as NSIndexPath
     let cell = fromVC.collectionUsers.cellForItemAtIndexPath(cellIndexPath) as UserCollectionViewCell
     let cellSnapshot = cell.snapshotViewAfterScreenUpdates(false)
-    cellSnapshot.frame = containerView.convertRect(cell.imageUser.frame, fromView: cell.imageUser.superview)
+    cellSnapshot.frame = containerView.convertRect(cell.imageUser.frame, fromView: cell.imageUser.superview) //need coordinates in terms of container view
     cell.imageUser.hidden = true
     
     //To view controller: set frame and hide.

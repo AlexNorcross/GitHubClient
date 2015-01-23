@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchRepositoriesViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class SearchRepositoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
   //Table: to display repositories
   @IBOutlet weak var tableRepositories: UITableView!
   //Search bar:
@@ -24,11 +24,12 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
     //Super:
     super.viewDidLoad()
     
-    //Table: register cell nib; set datasource
+    //Table: register cell nib, etc,
     tableRepositories.registerNib(UINib(nibName: "RepositoryTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL_REPOSITORY")
     tableRepositories.dataSource = self
+    tableRepositories.delegate = self
     //Table: automatically adjust row height
-    tableRepositories.estimatedRowHeight = 125
+    tableRepositories.estimatedRowHeight = 100
     tableRepositories.rowHeight = UITableViewAutomaticDimension
     
     //Search bar: delegate
@@ -54,7 +55,23 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
     return cell
   } //end func
   
+  //MARK: TableView Delegate
+  
+  //Function: Handle event when table view cell is selected.
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //Web view controller:
+    let webVC = self.storyboard?.instantiateViewControllerWithIdentifier("VC_WEB") as WebViewController
+    webVC.url = repositories[indexPath.row].url
+    //Present view controller.
+    navigationController?.pushViewController(webVC, animated: true)
+  } //end func
+  
   //MARK: SearchBar Delegate
+  
+  //Function: Validate text entered.
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    return text.validateSearchTerm()
+  } //end func
   
   //Function: Handle event when Search button is selected.
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {

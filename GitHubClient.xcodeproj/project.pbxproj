@@ -23,6 +23,8 @@
 		BA5171FC1A6DA06B00B045D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5171FA1A6DA06B00B045D3 /* LaunchScreen.xib */; };
 		BA5172081A6DA06B00B045D3 /* GitHubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5172071A6DA06B00B045D3 /* GitHubClientTests.swift */; };
 		BA5172151A6DA1AA00B045D3 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5172141A6DA1AA00B045D3 /* MenuTableViewController.swift */; };
+		BA88EAAD1A71A7F600A420FE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88EAAC1A71A7F600A420FE /* Extensions.swift */; };
+		BA88EAAF1A71B72200A420FE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88EAAE1A71B72200A420FE /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		BA5172061A6DA06B00B045D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA5172071A6DA06B00B045D3 /* GitHubClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClientTests.swift; sourceTree = "<group>"; };
 		BA5172141A6DA1AA00B045D3 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		BA88EAAC1A71A7F600A420FE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BA88EAAE1A71B72200A420FE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 			children = (
 				BA40D9651A6DB1B6003E995A /* Repository.swift */,
 				BA2D4B7A1A704C4400693A27 /* User.swift */,
+				BA88EAAC1A71A7F600A420FE /* Extensions.swift */,
 			);
 			name = "Model Layer";
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 				BA2D4B761A70491E00693A27 /* SearchUserViewController.swift */,
 				BA2D4B781A704ADD00693A27 /* UserViewController.swift */,
 				BA2D4B7E1A70A6B700693A27 /* ToUserViewController.swift */,
+				BA88EAAE1A71B72200A420FE /* WebViewController.swift */,
 			);
 			name = "Controller Layer";
 			sourceTree = "<group>";
@@ -274,9 +280,11 @@
 				BA2D4B771A70491E00693A27 /* SearchUserViewController.swift in Sources */,
 				BA2D4B7F1A70A6B700693A27 /* ToUserViewController.swift in Sources */,
 				BA2D4B7B1A704C4400693A27 /* User.swift in Sources */,
+				BA88EAAD1A71A7F600A420FE /* Extensions.swift in Sources */,
 				BA40D96A1A6DB817003E995A /* RepositoryTableViewCell.swift in Sources */,
 				BA5172151A6DA1AA00B045D3 /* MenuTableViewController.swift in Sources */,
 				BA5171F21A6DA06B00B045D3 /* AppDelegate.swift in Sources */,
+				BA88EAAF1A71B72200A420FE /* WebViewController.swift in Sources */,
 				BA2D4B7D1A7054A200693A27 /* UserCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
