@@ -19,10 +19,16 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
   //Users:
   var users = [User]()
   
+  //Key entry alert view:
+  var alertKeyEntry: KeyEntryAlertView!
+  
   //Function: Set up view controller.
   override func viewDidLoad() {
     //Super:
     super.viewDidLoad()
+    
+    //Title:
+    self.title = "Search Users"
     
     //Collection view: delegate & data source
     collectionUsers.delegate = self
@@ -36,6 +42,19 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
   override func viewWillAppear(animated: Bool) {
     //Navigation bar: delegate
     navigationController?.delegate = self
+  } //end func
+
+  //Function: Set up after View Controller appeared.
+  override func viewDidAppear(animated: Bool) {
+    //Super:
+    super.viewDidAppear(animated)
+    
+    //Set up key entry alert view.
+    alertKeyEntry = NSBundle.mainBundle().loadNibNamed("KeyEntryAlertView", owner: self, options: nil).first as KeyEntryAlertView
+    alertKeyEntry.center = self.view.center
+    initAlertKeyEntry()
+    self.view.addSubview(alertKeyEntry)
+    alertKeyEntry.buttonOK.addTarget(self, action: "pressedAlertKeyEntryOK", forControlEvents: UIControlEvents.TouchUpInside)
   } //end func
   
   //MARK: CollectionView Data Source
@@ -82,7 +101,14 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
   
   //Function: Validate text entered.
   func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-    return text.validateUserName()
+    let validChar = text.validateUserName()
+    if validChar == false {
+      UIView.animateWithDuration(1.0, animations: { () -> Void in
+        self.alertKeyEntry.alpha = 1
+        self.alertKeyEntry.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) //end closure
+    } //end if
+    return validChar
   } //end func
   
   //Function: Handle event when Search button is selected.
@@ -118,5 +144,22 @@ class SearchUserViewController: UIViewController, UICollectionViewDataSource, UI
     } else {
       return nil
     } //end if
+  } //end func
+
+  //MARK: Selectors
+  
+  //Function: Handle event when OK button on alert key entry view is pressed.
+  func pressedAlertKeyEntryOK() {
+    UIView.animateWithDuration(1.0, animations: { () -> Void in
+      self.initAlertKeyEntry()
+    }) //end func
+  } //end func
+  
+  //MARK: Alert View
+  
+  //Function: Initialize alert key entry view.
+  func initAlertKeyEntry() {
+    alertKeyEntry.alpha = 0
+    alertKeyEntry.transform = CGAffineTransformMakeScale(0.5, 0.5)
   } //end func
 }

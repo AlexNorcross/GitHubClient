@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //Fonts:
     UILabel.appearance().font = UIFont(name: "Avenir", size: 17.0)
-    
+
     //Return.
     return true
   }

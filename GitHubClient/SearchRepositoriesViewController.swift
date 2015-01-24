@@ -19,10 +19,16 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
   //Repositories:
   var repositories = [Repository]()
   
+  //Key entry alert view:
+  var alertKeyEntry: KeyEntryAlertView!
+  
   //Function: Set up view controller.
   override func viewDidLoad() {
     //Super:
     super.viewDidLoad()
+    
+    //Title:
+    self.title = "Search Repositories"
     
     //Table: register cell nib, etc,
     tableRepositories.registerNib(UINib(nibName: "RepositoryTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL_REPOSITORY")
@@ -34,6 +40,19 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
     
     //Search bar: delegate
     searchBar.delegate = self
+  } //end func
+  
+  //Function: Set up after View Controller appeared.
+  override func viewDidAppear(animated: Bool) {
+    //Super:
+    super.viewDidAppear(animated)
+    
+    //Set up key entry alert view.
+    alertKeyEntry = NSBundle.mainBundle().loadNibNamed("KeyEntryAlertView", owner: self, options: nil).first as KeyEntryAlertView
+    alertKeyEntry.center = self.view.center
+    initAlertKeyEntry()
+    self.view.addSubview(alertKeyEntry)
+    alertKeyEntry.buttonOK.addTarget(self, action: "pressedAlertKeyEntryOK", forControlEvents: UIControlEvents.TouchUpInside)
   } //end func
   
   //MARK: TableView Data Source
@@ -70,7 +89,14 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
   
   //Function: Validate text entered.
   func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-    return text.validateSearchTerm()
+    let validChar = text.validateSearchTerm()
+    if validChar == false {
+      UIView.animateWithDuration(1.0, animations: { () -> Void in
+        self.alertKeyEntry.alpha = 1
+        self.alertKeyEntry.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) //end closure
+    } //end if
+    return validChar
   } //end func
   
   //Function: Handle event when Search button is selected.
@@ -84,5 +110,22 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
     }) //end closure
     //Dismiss keyboard.
     searchBar.resignFirstResponder()
+  } //end func
+  
+  //MARK: Selectors
+  
+  //Function: Handle event when OK button on alert key entry view is pressed.
+  func pressedAlertKeyEntryOK() {
+    UIView.animateWithDuration(1.0, animations: { () -> Void in
+      self.initAlertKeyEntry()
+    }) //end func
+  } //end func
+  
+  //MARK: Alert View
+  
+  //Function: Initialize alert key entry view.
+  func initAlertKeyEntry() {
+    alertKeyEntry.alpha = 0
+    alertKeyEntry.transform = CGAffineTransformMakeScale(0.5, 0.5)
   } //end func
 }

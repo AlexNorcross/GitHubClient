@@ -25,6 +25,10 @@
 		BA5172151A6DA1AA00B045D3 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5172141A6DA1AA00B045D3 /* MenuTableViewController.swift */; };
 		BA88EAAD1A71A7F600A420FE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88EAAC1A71A7F600A420FE /* Extensions.swift */; };
 		BA88EAAF1A71B72200A420FE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88EAAE1A71B72200A420FE /* WebViewController.swift */; };
+		BA88EAB11A71E66400A420FE /* PermissionAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA88EAB01A71E66400A420FE /* PermissionAlertView.xib */; };
+		BA88EAB31A71E6A100A420FE /* KeyEntryAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA88EAB21A71E6A100A420FE /* KeyEntryAlertView.xib */; };
+		BA88EAB51A71F39800A420FE /* PermissionAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88EAB41A71F39700A420FE /* PermissionAlertView.swift */; };
+		BA88EAB71A71F41200A420FE /* KeyEntryAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88EAB61A71F41200A420FE /* KeyEntryAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		BA5172141A6DA1AA00B045D3 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		BA88EAAC1A71A7F600A420FE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BA88EAAE1A71B72200A420FE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		BA88EAB01A71E66400A420FE /* PermissionAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PermissionAlertView.xib; sourceTree = "<group>"; };
+		BA88EAB21A71E6A100A420FE /* KeyEntryAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyEntryAlertView.xib; sourceTree = "<group>"; };
+		BA88EAB41A71F39700A420FE /* PermissionAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionAlertView.swift; sourceTree = "<group>"; };
+		BA88EAB61A71F41200A420FE /* KeyEntryAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyEntryAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +176,10 @@
 				BA40D96B1A6DB836003E995A /* RepositoryTableViewCell.xib */,
 				BA40D9691A6DB817003E995A /* RepositoryTableViewCell.swift */,
 				BA2D4B7C1A7054A200693A27 /* UserCollectionViewCell.swift */,
+				BA88EAB01A71E66400A420FE /* PermissionAlertView.xib */,
+				BA88EAB41A71F39700A420FE /* PermissionAlertView.swift */,
+				BA88EAB21A71E6A100A420FE /* KeyEntryAlertView.xib */,
+				BA88EAB61A71F41200A420FE /* KeyEntryAlertView.swift */,
 			);
 			name = "View Layer";
 			sourceTree = "<group>";
@@ -255,6 +267,8 @@
 				BA40D96C1A6DB836003E995A /* RepositoryTableViewCell.xib in Resources */,
 				BA5171F71A6DA06B00B045D3 /* Main.storyboard in Resources */,
 				BA5171FC1A6DA06B00B045D3 /* LaunchScreen.xib in Resources */,
+				BA88EAB11A71E66400A420FE /* PermissionAlertView.xib in Resources */,
+				BA88EAB31A71E6A100A420FE /* KeyEntryAlertView.xib in Resources */,
 				BA5171F91A6DA06B00B045D3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +290,7 @@
 				BA40D9641A6DA8EF003E995A /* NetworkController.swift in Sources */,
 				BA2D4B791A704ADD00693A27 /* UserViewController.swift in Sources */,
 				BA40D9621A6DA8C8003E995A /* SearchRepositoriesViewController.swift in Sources */,
+				BA88EAB71A71F41200A420FE /* KeyEntryAlertView.swift in Sources */,
 				BA40D9661A6DB1B6003E995A /* Repository.swift in Sources */,
 				BA2D4B771A70491E00693A27 /* SearchUserViewController.swift in Sources */,
 				BA2D4B7F1A70A6B700693A27 /* ToUserViewController.swift in Sources */,
@@ -283,6 +298,7 @@
 				BA88EAAD1A71A7F600A420FE /* Extensions.swift in Sources */,
 				BA40D96A1A6DB817003E995A /* RepositoryTableViewCell.swift in Sources */,
 				BA5172151A6DA1AA00B045D3 /* MenuTableViewController.swift in Sources */,
+				BA88EAB51A71F39800A420FE /* PermissionAlertView.swift in Sources */,
 				BA5171F21A6DA06B00B045D3 /* AppDelegate.swift in Sources */,
 				BA88EAAF1A71B72200A420FE /* WebViewController.swift in Sources */,
 				BA2D4B7D1A7054A200693A27 /* UserCollectionViewCell.swift in Sources */,

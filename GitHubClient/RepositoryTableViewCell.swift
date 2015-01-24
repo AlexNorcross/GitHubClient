@@ -9,7 +9,7 @@
 import UIKit
 
 class RepositoryTableViewCell: UITableViewCell {
-  //Label: to display repository name, author
+  //Objects: to display repository name, author
   @IBOutlet weak var labelRepositoryName: UILabel!
   @IBOutlet weak var labelWrittenBy: UILabel!
   @IBOutlet weak var labelAuthor: UILabel!
@@ -20,6 +20,7 @@ class RepositoryTableViewCell: UITableViewCell {
     super.awakeFromNib()
     
     //Set up.
+    self.labelRepositoryName.font = UIFont(name: "Avenir-Black", size: 17.0)
     self.labelWrittenBy.font = UIFont(name: "Avenir", size: 12.0)
     self.labelAuthor.font = UIFont(name: "Avenir", size: 12.0)
   } //end func
