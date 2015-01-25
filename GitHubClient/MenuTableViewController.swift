@@ -33,6 +33,7 @@ class MenuTableViewController: UITableViewController {
     
     //Set up permissions alert view.
     alertPermission = NSBundle.mainBundle().loadNibNamed("PermissionAlertView", owner: self, options: nil).first as PermissionAlertView
+    alertPermission.layer.cornerRadius = 10
     alertPermission.center = self.view.center
     alertPermission.alpha = 0
     alertPermission.transform = CGAffineTransformMakeScale(0.5, 0.5)
@@ -40,12 +41,12 @@ class MenuTableViewController: UITableViewController {
     alertPermission.buttonOK.addTarget(self, action: "pressedAlertPermissionOK", forControlEvents: UIControlEvents.TouchUpInside)
     
     //Retrieve access token. If none, alert user that permissions must be granted.
-    if networkController.accessToken == nil {
+//    if networkController.accessToken == nil {
       UIView.animateWithDuration(1.0, animations: { () -> Void in
         self.alertPermission.alpha = 1.0
         self.alertPermission.transform = CGAffineTransformMakeScale(1.0, 1.0)
       }) //end closure
-    } //end if
+    //} //end if
   } //end func
 
   //Function: Handle event when OK button on alert key entry view is pressed.

@@ -49,6 +49,7 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
     
     //Set up key entry alert view.
     alertKeyEntry = NSBundle.mainBundle().loadNibNamed("KeyEntryAlertView", owner: self, options: nil).first as KeyEntryAlertView
+    alertKeyEntry.layer.cornerRadius = 10
     alertKeyEntry.center = self.view.center
     initAlertKeyEntry()
     self.view.addSubview(alertKeyEntry)
